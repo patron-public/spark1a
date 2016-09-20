@@ -21,6 +21,7 @@ object AvgBytesCounter {
     val dataSet = sc.textFile(args(0))
     val topLogs = getTop(dataSet)
     topLogs.saveAsTextFile("hdfs://"+ args(1))
+    topLogs.collect.foreach(println)
   }
 
   def getTop(text: RDD[String]): RDD[String]={
